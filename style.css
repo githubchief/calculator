@@ -20,11 +20,11 @@ body {
     text-align: right;
 }
 
-.input {
+#input {
     color: aqua;
 }
 
-.output {
+#output {
     color:white;
     font-size: 1.25rem;
 }
@@ -33,7 +33,7 @@ body {
     color: aliceblue;
 }
 
-.keypad {
+#keypad {
     margin: 1rem;
     display: flex;
     flex-direction: column ;
