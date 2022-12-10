@@ -1,3 +1,70 @@
 body {
     background-color:rgb(250, 242, 215);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    margin-top: 2rem;
+    background-color: rgb(50, 50, 50);
+    border-radius: 0.5rem;
+}
+
+.display {
+    background-color: rgb(103, 103, 103);
+    margin: 1rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.input {
+    color: aqua;
+}
+
+.output {
+    color:white;
+    font-size: 1.25rem;
+}
+
+.close {
+    color: aliceblue;
+}
+
+.keypad {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column ;
+    gap:0.5rem;
+}
+
+.footer {
+   margin-top: auto;
+   margin-bottom: 2rem;
+}
+
+.button {
+    border-radius: 100%;
+    border-color: transparent;
+    padding: 1rem;
+    gap: 0.5rem;
+    flex:1;
+}
+
+.row {
+    display: flex;
+    gap:0.5rem;
+}
+
+.num0, .dot{
+    flex:0  ;
+}
+
+.all-clear {
+    padding: 0.75rem;
+}
+
+.dot{
+    padding: 1.25rem;
 }
