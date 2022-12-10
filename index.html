@@ -5,44 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
-    <script src="main.js"></script>
+    <script defer src="main.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="display">
-            <div class="input">input</div>
-            <div class="output">output</div>
+            <div id="input">input</div>
+            <div id="output">output</div>
         </div>
-        <div class="keypad">
+        <div id="keypad">
             <div class="first row">
-                <button type="button" class="button all-clear">AC</button>
-                <button type="button" class="button clear">C</button>
-                <button type="button" class="button operation %">%</button>
-                <button type="button" class="button operation /">/</button>
+                <button type="button" class="button all-clear" id="all-clear">AC</button>
+                <button type="button" class="button clear" id="clear">C</button>
+                <button type="button" class="button operation" id="reminder" value="%">%</button>
+                <button type="button" class="button operation" id="division" value="/">/</button>
             </div>
             <div class="second row">
-                <button type="button" class="button num7">7</button>
-                <button type="button" class="button num8">8</button>
-                <button type="button" class="button num9">9</button>
-                <button type="button" class="button operation +">+</button>
+                <button type="button" class="button digit num7" id="digit-7" value="7">7</button>
+                <button type="button" class="button digit num8" id="digit-8" value="8">8</button>
+                <button type="button" class="button digit num9" id="digit-9" value="9">9</button>
+                <button type="button" class="button operation" id="addition" value="+">+</button>
             </div>
             <div class="third row">
-                <button type="button" class="button num4">4</button>
-                <button type="button" class="button num5">5</button>
-                <button type="button" class="button num6">6</button>
-                <button type="button" class="button operation -">-</button>
+                <button type="button" class="button digit num4" id="digit-4" value="4">4</button>
+                <button type="button" class="button digit num5" id="digit-5" value="5">5</button>
+                <button type="button" class="button digit num6" id="digit-6" value="6">6</button>
+                <button type="button" class="button operation" id="subtraction" value="-">-</button>
             </div>
             <div class="fourth row">
-                <button type="button" class="button num1">1</button>
-                <button type="button" class="button num2">2</button>
-                <button type="button" class="button num3">3</button>
-                <button type="button" class="button operation *">x</button>
+                <button type="button" class="button digit num1" id="digit-1" value="1">1</button>
+                <button type="button" class="button digit num2" id="digit-2" value="2">2</button>
+                <button type="button" class="button digit num3" id="digit-3" value="3">3</button>
+                <button type="button" class="button operation" id="multiplication" value="*">x</button>
             </div>
             <div class="fifth row">
-                <button type="button" class="button num0">0</button>
-                <button type="button" class="button dot">.</button>
-                <button type="button" class="button equals">=</button>
+                <button type="button" class="button digit num0" id="digit-0" value="0">0</button>
+                <button type="button" class="button dot" id="dot">.</button>
+                <button type="button" class="button equals" id="equals">=</button>
             </div>
         </div>
         
