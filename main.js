@@ -96,7 +96,7 @@ function getOperator(ev) {
     });
 }
 
-//function to collect operator, second input and call the operator to perform mathematical operation
+//function to collect operator, second input 
 function getInput2(e,op){
     
     //reset currentInput
@@ -110,11 +110,10 @@ function getInput2(e,op){
     num2=currentInput;
     currentInput="";
     
-
 }
 
 
-//when equals is click display the output
+//when equals is clicked  call the operator to perform mathematical operation and display the output
 equals.addEventListener("click", () => { 
 
         //call the operator function
@@ -122,8 +121,8 @@ equals.addEventListener("click", () => {
 
         //move the result to currentInput to store the value for recursive calculation
         currentInput=result;
-        
-    displayOutput(result);
+
+        displayOutput(result);
 });
 
 
