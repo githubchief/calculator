@@ -38,18 +38,21 @@ function operate(op,num1, num2) {
     }
 }
 
-//store input,output dom element
+//store input,output and equal element
 let input=document.getElementById("input");
 let output=document.getElementById("output");
 let equals=document.getElementById("equals");
 
-//get the array of digit elements
+//get the array of digit and operator elements
 let number=document.querySelectorAll(".digit");
+let operator=document.querySelectorAll(".operation");
 
-//variable to store the input number
+//variables to store the input,result and temp number
 let num1="";
 let num2="";
 let currentInput="";
+let result=0;
+
 //variable to store operator
 let op="";
 
@@ -62,55 +65,86 @@ number.forEach(num => {
 function getInput1(e){
         let temp=e.target;
         currentInput=currentInput+temp.value;
+        //display currentInput 
         displayInput(currentInput);
-       
 }
 
-//for each element in the operator array get the operator and store it in the op based on the click
-let operator=document.querySelectorAll(".operation");
+//for each element in the operator array invole the getOperator function
 operator.forEach(oper => {
     oper.addEventListener("click", getOperator)
 });
 
+//function to store the operator in the op
 function getOperator(ev) {
     let temp=ev.target;
     op=temp.value;
+
+    //move the value of cuurentInput to num1
     num1=currentInput;
-    input.innerHTML="";
-    currentInput="";
-    //when a operator is received, collect the digits to num2;
+
+    //when a operator is received, start collecting the digits to num2;
+
+    input.innerHTML=""; //reset the display
+    currentInput=""; //reset currentInput
+
+    //event listener to get second input
+    let number=document.querySelectorAll(".digit");
     number.forEach(element => {
-        element.addEventListener("click", (e)=> getInput2(e,op))
+        //for each click call the getinput2 function and pass the operator as parameter
+        element.addEventListener("click", (e)=> getInput2(e,op)
+        )
     });
 }
 
+//function to collect operator, second input and call the operator to perform mathematical operation
 function getInput2(e,op){
-
+    
+    //reset currentInput
     currentInput="";
     let temp=e.target;
     currentInput=currentInput+temp.value;
-    displayInput(currentInput);
+
+    //display second input to users
+    displayInput(currentInput); 
+
     num2=currentInput;
     currentInput="";
+    
+    //call the operator function
     result=operate(op,parseInt(num1),parseInt(num2));
+
+    //move the result to currentInput to store the value for recursive calculation
     currentInput=result;
 }
 
-let result=0;
-//console.log(num2,num1,op);c
+
+//when equals is click display the output
 equals.addEventListener("click", () => { 
-   
     displayOutput(result);
-   
 });
 
-//operate(op,num1,num2)
 
 function displayInput(e) {
-    //    input.textContent=input.textContent+e;
     input.innerHTML=e;
 }
 
 function displayOutput(res) {
     output.innerHTML=res;
+}
+
+
+//elements to clear value
+let allClear=document.getElementById("all-clear");
+let clear=document.getElementById("clear");
+
+allClear.addEventListener("click",clearSlate);
+clear.addEventListener("click",clearSlate);
+
+function clearSlate(){
+    num1="";
+    num2="";
+    op="";
+    currentInput="";
+    displayInput("input");
+    displayOutput("output");
 }
