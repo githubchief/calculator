@@ -1,26 +1,26 @@
 //function to add two numbers
 function add(num1, num2) {
-    return num1+num2;
+    return output.innerHTML=(num1+num2);
 }
 
 //function to subtract two numbers
 function sub(num1, num2) {
-    return num1-num2;
+    return output.innerHTML=num1-num2;
 }
 
 //function to multiply two numbers
 function multiply(num1, num2) {
-    return num1*num2;
+    return output.innerHTML=num1*num2;
 }
 
 //function to divide two numbers
 function divide(num1, num2) {
-    return num1/num2;
+    return output.innerHTML=num1/num2;
 }
 
 //function to find reminder of two numbers
 function mod(num1, num2) {
-    return num1%num2;
+    return output.innerHTML=num1%num2;
 }
 
 function operate(op,num1, num2) {
@@ -41,6 +41,7 @@ function operate(op,num1, num2) {
 //store input,output dom element
 let input=document.getElementById("input");
 let output=document.getElementById("output");
+let equals=document.getElementById("equals");
 
 //get the array of digit elements
 let number=document.querySelectorAll(".digit");
@@ -74,6 +75,7 @@ function getOperator(ev) {
     let temp=ev.target;
     op=temp.value;
     num1=currentInput;
+    input.innerHTML="";
     currentInput="";
     //when a operator is received, collect the digits to num2;
     number.forEach(element => {
@@ -88,17 +90,14 @@ function getInput2(e,op){
     currentInput=currentInput+temp.value;
     displayInput(currentInput);
     num2=currentInput;
-    //once we have num1 and num2 calculate result
-    result=operate(op,parseInt(num1), parseInt(num2));
-    displayOutput(result);
 }
 
+//console.log(num2,num1,op);c
+equals.addEventListener("click", () => operate(op,parseInt(num1),parseInt(num2)));
+
+//operate(op,num1,num2)
 
 function displayInput(e) {
     //    input.textContent=input.textContent+e;
     input.innerHTML=e;
-}
-
-function displayOutput(e) {
-    output.innerHTML=e;
 }
