@@ -63,6 +63,7 @@ function getInput1(e){
         let temp=e.target;
         currentInput=currentInput+temp.value;
         displayInput(currentInput);
+       
 }
 
 //for each element in the operator array get the operator and store it in the op based on the click
@@ -90,13 +91,17 @@ function getInput2(e,op){
     currentInput=currentInput+temp.value;
     displayInput(currentInput);
     num2=currentInput;
+    currentInput="";
+    result=operate(op,parseInt(num1),parseInt(num2));
+    currentInput=result;
 }
 
 let result=0;
 //console.log(num2,num1,op);c
 equals.addEventListener("click", () => { 
-    result=operate(op,parseInt(num1),parseInt(num2));
+   
     displayOutput(result);
+   
 });
 
 //operate(op,num1,num2)
