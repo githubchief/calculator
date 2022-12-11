@@ -110,16 +110,19 @@ function getInput2(e,op){
     num2=currentInput;
     currentInput="";
     
-    //call the operator function
-    result=operate(op,parseInt(num1),parseInt(num2));
 
-    //move the result to currentInput to store the value for recursive calculation
-    currentInput=result;
 }
 
 
 //when equals is click display the output
 equals.addEventListener("click", () => { 
+
+        //call the operator function
+        result=operate(op,parseInt(num1),parseInt(num2));
+
+        //move the result to currentInput to store the value for recursive calculation
+        currentInput=result;
+        
     displayOutput(result);
 });
 
