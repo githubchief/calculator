@@ -142,6 +142,8 @@ let clear=document.getElementById("clear");
 allClear.addEventListener("click",clearSlate);
 clear.addEventListener("click",clearSlate);
 
+
+//clear function to reset variables to initial condition and remove event listeners and add them again for num1
 function clearSlate(){
     num1="";
     num2="";
