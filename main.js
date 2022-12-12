@@ -60,7 +60,8 @@ let op="";
 number.forEach(num => {
     num.addEventListener("click", getInput1)
 });
- 
+
+
 //function to get the inputs and store it in a separate variable
 function getInput1(e){
         let temp=e.target;
@@ -72,32 +73,30 @@ function getInput1(e){
 //for each element in the operator array invole the getOperator function
 operator.forEach(oper => {
     oper.addEventListener("click", getOperator)
+    num2="";
 });
 
 //function to store the operator in the op
 function getOperator(ev) {
     let temp=ev.target;
     op=temp.value;
-
+    num2="";
     //move the value of cuurentInput to num1
     num1=currentInput;
-
     //when a operator is received, start collecting the digits to num2;
-
     input.innerHTML=""; //reset the display
     currentInput=""; //reset currentInput
 
     //event listener to get second input
-    let number=document.querySelectorAll(".digit");
     number.forEach(element => {
         //for each click call the getinput2 function and pass the operator as parameter
-        element.addEventListener("click", (e)=> getInput2(e,op)
+        element.addEventListener("click", (e)=> getInput2(e)
         )
     });
 }
 
 //function to collect operator, second input 
-function getInput2(e,op){
+function getInput2(e){
     
     //reset currentInput
     currentInput="";
@@ -121,7 +120,8 @@ equals.addEventListener("click", () => {
 
         //move the result to currentInput to store the value for recursive calculation
         currentInput=result;
-
+        num2="";
+        op="";
         displayOutput(result);
 });
 
@@ -149,4 +149,13 @@ function clearSlate(){
     currentInput="";
     displayInput("input");
     displayOutput("output");
+    number.forEach(element => {
+        element.removeEventListener("click", getInput2);
+        element.removeEventListener("click", getInput1);
+        
+    });
+
+    number.forEach(num => {
+        num.addEventListener("click", getInput1)
+    });
 }
