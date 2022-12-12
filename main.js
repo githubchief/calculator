@@ -15,7 +15,9 @@ function multiply(num1, num2) {
 
 //function to divide two numbers
 function divide(num1, num2) {
+    if (num2!=0)
     return (num1/num2);
+    else return "Infinity";
 }
 
 //function to find reminder of two numbers
@@ -60,7 +62,6 @@ let op="";
 number.forEach(num => {
     num.addEventListener("click", getInput1)
 });
-
 
 //function to get the inputs and store it in a separate variable
 function getInput1(e){
@@ -117,12 +118,11 @@ equals.addEventListener("click", () => {
 
         //call the operator function
         result=operate(op,parseInt(num1),parseInt(num2));
-
+        displayOutput(result);
         //move the result to currentInput to store the value for recursive calculation
         currentInput=result;
-        num2="";
-        op="";
-        displayOutput(result);
+
+        
 });
 
 
