@@ -58,106 +58,101 @@ let result=0;
 //variable to store operator
 let op="";
 
-//for each element in the array of digits invoke getInput
+
+//event listener to get number
 number.forEach(num => {
-    num.addEventListener("click", getInput1)
+    num.addEventListener("click", getInput)
 });
 
-//function to get the inputs and store it in a separate variable
-function getInput1(e){
-        let temp=e.target;
-        currentInput=currentInput+temp.value;
-        //display currentInput 
-        displayInput(currentInput);
-}
-
-//for each element in the operator array invole the getOperator function
-operator.forEach(oper => {
-    oper.addEventListener("click", getOperator)
-    num2="";
-});
-
-//function to store the operator in the op
-function getOperator(ev) {
-    let temp=ev.target;
-    op=temp.value;
-    num2="";
-    //move the value of cuurentInput to num1
-    num1=currentInput;
-    //when a operator is received, start collecting the digits to num2;
-    input.innerHTML=""; //reset the display
-    currentInput=""; //reset currentInput
-
-    //event listener to get second input
-    number.forEach(element => {
-        //for each click call the getinput2 function and pass the operator as parameter
-        element.addEventListener("click", (e)=> getInput2(e)
-        )
-    });
-}
-
-//function to collect operator, second input 
-function getInput2(e){
-    
-    //reset currentInput
-    currentInput="";
+function getInput(e){
     let temp=e.target;
     currentInput=currentInput+temp.value;
-
-    //display second input to users
-    displayInput(currentInput); 
-
-    num2=currentInput;
-    currentInput="";
-    
+    displayInput(currentInput);
 }
 
+//event listener to get operator
+operator.forEach(oper => {
+    oper.addEventListener("click", getOperator)
+});
+
+let count=0;
+//get operator function to handle the operator event listener and store the input value in op
+function getOperator(e) {
+
+    let temp=e.target;
+    op=temp.value;
+    count++;
+
+
+    //if operator function is called more than once, perform calculation for num1, num2 and store it in num1
+    if(count>=2){
+        
+        if (num2==""){
+            num2=currentInput;
+            currentInput="";
+        }
+        
+        let i=operate(op,parseInt(num1),parseInt(num2));
+        //reset count nad num2 for next operation
+        num2="";
+        count=1;
+        num1=i;
+        displayOutput(i);
+
+    }
+
+    //if num1 is empty assign current input to num1
+    else if (num1==""){
+        num1=currentInput;
+        //clear current input to get next input value
+        currentInput="";
+    }
+}
 
 //when equals is clicked  call the operator to perform mathematical operation and display the output
 equals.addEventListener("click", () => { 
 
         //call the operator function
-        result=operate(op,parseInt(num1),parseInt(num2));
-        displayOutput(result);
-        //move the result to currentInput to store the value for recursive calculation
-        currentInput=result;
+        if (num2==""){
+            num2=currentInput;
+            currentInput="";
+        }
 
-        
+        result=operate(op,parseInt(num1),parseInt(num2));
+        num2="";
+        count=0;
+        num1="";
+        displayOutput(result);
+
 });
 
-
-function displayInput(e) {
-    input.innerHTML=e;
+//function to display inputs
+function displayInput(inp) {
+    input.innerHTML=inp;
 }
 
+//function to display outputs
 function displayOutput(res) {
     output.innerHTML=res;
 }
-
 
 //elements to clear value
 let allClear=document.getElementById("all-clear");
 let clear=document.getElementById("clear");
 
+//event listeners to clear the value and call the event listener function clearState
 allClear.addEventListener("click",clearSlate);
 clear.addEventListener("click",clearSlate);
-
 
 //clear function to reset variables to initial condition and remove event listeners and add them again for num1
 function clearSlate(){
     num1="";
     num2="";
     op="";
+    count=0;
     currentInput="";
     displayInput("input");
     displayOutput("output");
-    number.forEach(element => {
-        element.removeEventListener("click", getInput2);
-        element.removeEventListener("click", getInput1);
-        
-    });
 
-    number.forEach(num => {
-        num.addEventListener("click", getInput1)
-    });
+
 }
