@@ -65,7 +65,14 @@ number.forEach(num => {
 });
 
 function getInput(e){
+
     let temp=e.target;
+    if(temp.value == "."){
+        if(currentInput.includes("."))
+            {   
+                return;
+            }
+    }
     currentInput=currentInput+temp.value;
     displayInput(currentInput);
 }
@@ -117,8 +124,8 @@ equals.addEventListener("click", () => {
             num2=currentInput;
             currentInput="";
         }
-
-        result=operate(op,parseInt(num1),parseInt(num2));
+        
+        result=operate(op,parseFloat(num1),parseFloat(num2));
         num2="";
         count=0;
         num1="";
